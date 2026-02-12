@@ -1,0 +1,5 @@
+# Pipeline Workflows
+
+Phase workflow definitions used by the feature and bug pipelines. The orchestrator commands (`feature-pipeline`, `bug-pipeline`) in `.cursor/commands/` invoke subagents (`/researcher`, `/architect`, `/debug-specialist`, `/task-decomposer`, `/implementer`, `/archivist`); each subagent executes the workflow in the corresponding file here. In Phase 6, the feature pipeline invokes `/archivist` to produce a single summary document (request, planned approach, what was implemented) at `{archive_dir}/{feature_name}/{feature_name}.md` and then deletes the feature request and folder. In Phase 7, the bug pipeline invokes `/archivist` to produce a single summary at `{archive_dir}/fix-{bug_name}/fix-{bug_name}.md` and then deletes the bug request and folder. Do not invoke these workflow files directly—use `/feature-pipeline` or `/bug-pipeline` in Composer.
+
+Path conventions (e.g. `{features_dir}`, `{bugs_dir}`, `{context_docs_dir}`) are documented in [cursor/CONVENTIONS.md](../CONVENTIONS.md).
